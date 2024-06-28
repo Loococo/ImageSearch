@@ -24,6 +24,9 @@ android {
 
     buildTypes {
         release {
+            buildConfigField("String", "API_BASE_URL", AppConfig.baseUrl)
+            buildConfigField("String", "API_KEY", AppConfig.apiKey)
+
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -31,6 +34,9 @@ android {
             )
         }
         debug {
+            buildConfigField("String", "API_BASE_URL", AppConfig.baseUrl)
+            buildConfigField("String", "API_KEY", AppConfig.apiKey)
+
             isMinifyEnabled = false
         }
     }
@@ -75,6 +81,9 @@ dependencies {
 
     kapt(Version.HILT.HILT_ANDROID_COMPILER)
 
+    implementation(Version.RETROFIT.RETROFIT_ANDROID)
+    implementation(Version.RETROFIT.RETROFIT_GSON)
+    implementation(Version.OKHTTP.OKHTTP3)
 
     implementation(Version.ROOM.ROOM)
     kapt(Version.ROOM.ROOM_COMPILER)

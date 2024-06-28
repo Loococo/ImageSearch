@@ -46,8 +46,8 @@ object Version {
         const val ROOM_KTX_COMPILER = "android.arch.persistence.room:compiler:1.1.1"
     }
 
-    object ORBIT {
-        const val ORBIT_VIEWMODEL = "org.orbit-mvi:orbit-viewmodel:8.0.0"
-        const val ORBIT_COMPOSE = "org.orbit-mvi:orbit-compose:8.0.0"
+    object COIL {
+        const val COIL = "io.coil-kt:coil-compose:2.6.0"
     }
+
 }

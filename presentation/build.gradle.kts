@@ -48,8 +48,7 @@ dependencies {
 
     kapt(Version.HILT.HILT_ANDROID_COMPILER)
 
-    implementation(Version.ORBIT.ORBIT_VIEWMODEL)
-    implementation(Version.ORBIT.ORBIT_COMPOSE)
+    implementation(Version.COIL.COIL)
 
     androidTestImplementation(Version.AndroidTest.TEST_RUNNER)
     androidTestImplementation(Version.AndroidTest.ESPRESSO_CORE)
