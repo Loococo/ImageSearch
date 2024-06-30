@@ -20,13 +20,13 @@ data class ResponseData<T>(
 )
 
 suspend fun <T : Any> suspendResponseResult(
-    execute: suspend () -> Response<ResponseData<T>>
+    execute: suspend () -> Response<T>
 ): Flow<Resource<T>> = flow {
     emit(
         try {
             val response = execute()
             if (response.isSuccessful) {
-                response.body()?.data?.let {
+                response.body()?.let {
                     Resource.Success(it)
                 } ?: Resource.Error(ResourceException.NoDataException)
             } else {

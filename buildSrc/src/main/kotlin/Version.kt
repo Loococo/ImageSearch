@@ -50,4 +50,9 @@ object Version {
         const val COIL = "io.coil-kt:coil-compose:2.6.0"
     }
 
+    object PAGING {
+        const val PAGING = "androidx.paging:paging-compose:3.3.0"
+        const val PAGING_COMMON = "androidx.paging:paging-common:3.3.0"
+    }
+
 }

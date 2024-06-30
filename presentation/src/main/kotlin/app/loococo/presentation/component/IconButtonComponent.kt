@@ -30,3 +30,25 @@ fun ImageSearchIconButton(
         )
     }
 }
+
+@Composable
+fun ImageSearchIconButton(
+    modifier: Modifier,
+    size: Dp,
+    icon: ImageVector,
+    description: String,
+    color: Color = Black,
+    onClick: () -> Unit
+) {
+    IconButton(
+        modifier = modifier.size(size),
+        onClick = onClick
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = description,
+            modifier = Modifier.size(size),
+            tint = color
+        )
+    }
+}

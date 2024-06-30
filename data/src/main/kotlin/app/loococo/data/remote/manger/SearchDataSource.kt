@@ -1,5 +1,7 @@
 package app.loococo.data.remote.manger
 
+import androidx.paging.PagingSource
+import app.loococo.data.model.response.ImageDocument
 import app.loococo.data.model.response.SearchResponse
 import app.loococo.domain.model.network.Resource
 import kotlinx.coroutines.flow.Flow

@@ -24,6 +24,7 @@ android {
 
 dependencies {
     implementation(Version.RETROFIT.RETROFIT_GSON)
+    implementation(Version.PAGING.PAGING_COMMON)
 
     implementation(Version.HILT.HILT_ANDROID)
     kapt(Version.HILT.HILT_ANDROID_COMPILER)

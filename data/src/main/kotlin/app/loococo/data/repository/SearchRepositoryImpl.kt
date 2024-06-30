@@ -1,31 +1,26 @@
 package app.loococo.data.repository
 
-import android.util.Log
-import app.loococo.data.model.response.toSearch
-import app.loococo.data.remote.manger.SearchDataSource
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import app.loococo.data.paging.SearchPagingSource
+import app.loococo.data.remote.api.SearchApi
 import app.loococo.domain.model.Search
-import app.loococo.domain.model.network.Resource
 import app.loococo.domain.repository.SearchRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class SearchRepositoryImpl @Inject constructor(private val searchDataSource: SearchDataSource) :
-    SearchRepository {
-
-    override suspend fun search(searchWord: String): Flow<Resource<Search>> = flow {
-        Log.e("-------------2","$searchWord")
-        searchDataSource.search(searchWord).collect {
-            Log.e("---------------","$it")
-            when (it) {
-                is Resource.Success -> {
-                    emit(Resource.Success(it.data.toSearch()))
-                }
-
-                is Resource.Error -> {
-                    emit(it)
-                }
+class SearchRepositoryImpl @Inject constructor(
+    private val searchApi: SearchApi,
+) : SearchRepository {
+    override fun search(searchWord: String): Flow<PagingData<Search>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 10
+            ),
+            pagingSourceFactory = {
+                SearchPagingSource(searchApi, searchWord)
             }
-        }
+        ).flow
     }
 }

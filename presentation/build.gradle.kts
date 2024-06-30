@@ -42,13 +42,16 @@ dependencies {
 //    implementation(Version.COMPOSE.LIVEDATA)
 //    implementation(Version.COMPOSE.LIFECYCLE)
 
+    implementation(Version.COIL.COIL)
+
+    implementation(Version.PAGING.PAGING)
+
     implementation(Version.AndroidX.MATERIAL3)
     implementation(Version.HILT.HILT_ANDROID)
     implementation(Version.HILT.HILT_VIEWMODEL)
 
     kapt(Version.HILT.HILT_ANDROID_COMPILER)
 
-    implementation(Version.COIL.COIL)
 
     androidTestImplementation(Version.AndroidTest.TEST_RUNNER)
     androidTestImplementation(Version.AndroidTest.ESPRESSO_CORE)

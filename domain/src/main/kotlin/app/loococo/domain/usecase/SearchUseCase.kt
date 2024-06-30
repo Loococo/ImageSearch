@@ -1,6 +1,7 @@
 package app.loococo.domain.usecase
 
 import android.util.Log
+import androidx.paging.PagingData
 import app.loococo.domain.model.Search
 import app.loococo.domain.model.network.Resource
 import app.loococo.domain.repository.SearchRepository
@@ -9,8 +10,7 @@ import javax.inject.Inject
 
 class SearchUseCase @Inject constructor(private val searchRepository: SearchRepository) {
 
-    suspend fun search(searchWord: String): Flow<Resource<Search>> {
-        Log.e("-------------1","$searchWord")
+    fun search(searchWord: String): Flow<PagingData<Search>> {
         return searchRepository.search(searchWord)
     }
 }

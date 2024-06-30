@@ -32,6 +32,8 @@ dependencies {
     implementation(Version.RETROFIT.RETROFIT_ANDROID)
     implementation(Version.RETROFIT.RETROFIT_GSON)
 
+    implementation(Version.PAGING.PAGING)
+
     implementation(Version.ROOM.ROOM)
     kapt(Version.ROOM.ROOM_COMPILER)
     implementation(Version.ROOM.ROOM_KTX)

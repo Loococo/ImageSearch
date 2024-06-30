@@ -1,37 +1,47 @@
 package app.loococo.data.model.response
 
 import app.loococo.domain.model.Search
-import app.loococo.domain.model.SearchContent
+import com.google.gson.annotations.SerializedName
 
 data class SearchResponse(
-    val meta: Meta,
-    val documents: MutableList<Document>?
+    @SerializedName("documents")
+    val documents: List<ImageDocument>,
+    @SerializedName("meta")
+    val meta: Meta
+)
+
+data class ImageDocument(
+    @SerializedName("collection")
+    val collection: String,
+    @SerializedName("datetime")
+    val datetime: String,
+    @SerializedName("display_sitename")
+    val displaySitename: String,
+    @SerializedName("doc_url")
+    val docUrl: String,
+    @SerializedName("height")
+    val height: Int,
+    @SerializedName("image_url")
+    val imageUrl: String,
+    @SerializedName("thumbnail_url")
+    val thumbnailUrl: String,
+    @SerializedName("width")
+    val width: Int
 )
 
 data class Meta(
-    val totalCount: Int,
+    @SerializedName("is_end")
+    val isEnd: Boolean,
+    @SerializedName("pageable_count")
     val pageableCount: Int,
-    val isEnd: Boolean
+    @SerializedName("total_count")
+    val totalCount: Int
 )
 
-data class Document(
-    val collection: String,
-    val thumbnailUrl: String,
-    val imageUrl: String,
-    val width: Int,
-    val height: Int,
-    val displaySitename: String,
-    val docUrl: String,
-    val datetime: String
-)
-
-fun SearchResponse.toSearch(): Search {
+fun ImageDocument.toSearch(): Search {
     return Search(
-        list = this.documents?.map { document ->
-            SearchContent(
-                image = document.imageUrl,
-                title = document.displaySitename
-            )
-        } ?: emptyList()
+        image = imageUrl,
+        title = displaySitename
     )
 }
+
