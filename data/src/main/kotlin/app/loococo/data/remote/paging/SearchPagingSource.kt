@@ -1,4 +1,4 @@
-package app.loococo.data.paging
+package app.loococo.data.remote.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -9,14 +9,14 @@ import javax.inject.Inject
 
 class SearchPagingSource @Inject constructor(
     private val searchApi: SearchApi,
-    private val searchWord: String
+    private val keyword: String
 ) : PagingSource<Int, Search>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Search> {
         val page = params.key ?: 1
         return try {
-            val response = searchApi.search(searchWord, page, params.loadSize)
+            val response = searchApi.search(keyword, page, params.loadSize)
             if (response.isSuccessful) {
-                val responseData = response.body()?.documents?.map { it.toSearch() } ?: emptyList()
+                val responseData = response.body()?.documents?.map { it.toSearch(keyword) } ?: emptyList()
                 LoadResult.Page(
                     data = responseData,
                     prevKey = if (page == 1) null else page - 1,

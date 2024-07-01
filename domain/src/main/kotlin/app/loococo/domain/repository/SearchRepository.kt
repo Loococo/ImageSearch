@@ -5,5 +5,5 @@ import app.loococo.domain.model.Search
 import kotlinx.coroutines.flow.Flow
 
 interface SearchRepository {
-    fun search(searchWord: String): Flow<PagingData<Search>>
+    fun search(keyword: String): Flow<PagingData<Search>>
 }

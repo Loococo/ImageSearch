@@ -52,7 +52,7 @@ fun ImageSearchBorderTextField(
                 value = textState,
                 onValueChange = { newTextState ->
                     textState = newTextState
-//                    onValueChange(textState.text)
+                    onValueChange(textState.text)
                 },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -76,7 +76,6 @@ fun ImageSearchBorderTextField(
                 keyboardActions = KeyboardActions(
                     onDone = {
                         onValueChange(textState.text)
-                        textState = TextFieldValue("")
                     }
                 )
             )
@@ -88,7 +87,6 @@ fun ImageSearchBorderTextField(
                     description = "done",
                     onClick = {
                         onValueChange(textState.text)
-                        textState = TextFieldValue("")
                     }
                 )
             }

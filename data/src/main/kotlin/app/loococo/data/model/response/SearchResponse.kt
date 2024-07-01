@@ -38,10 +38,11 @@ data class Meta(
     val totalCount: Int
 )
 
-fun ImageDocument.toSearch(): Search {
+fun ImageDocument.toSearch(keyword: String): Search {
     return Search(
         image = imageUrl,
-        title = displaySitename
+        description = displaySitename,
+        keyword = keyword
     )
 }
 

@@ -38,4 +38,5 @@ dependencies {
     kapt(Version.ROOM.ROOM_COMPILER)
     implementation(Version.ROOM.ROOM_KTX)
     kapt(Version.ROOM.ROOM_KTX_COMPILER)
+    implementation(Version.ROOM.ROOM_PAGING)
 }

@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -30,12 +29,8 @@ import coil.request.ImageRequest
 
 @Composable
 fun SearchListScreen(list: LazyPagingItems<Search>) {
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
-    ) {
-        items(
-            count = list.itemCount,
-        ) { index ->
+    LazyVerticalGrid(columns = GridCells.Fixed(2)) {
+        items(count = list.itemCount) { index ->
             list[index]?.let { search ->
                 SearchItem(search)
             }
@@ -44,7 +39,9 @@ fun SearchListScreen(list: LazyPagingItems<Search>) {
 }
 
 @Composable
-fun SearchItem(item: Search) {
+fun SearchItem(
+    item: Search,
+) {
     Column(
         modifier = Modifier
             .padding(5.dp)
@@ -60,11 +57,10 @@ fun SearchItem(item: Search) {
                 icon = ImageSearchIcons.BookmarksBorder,
                 description = "하트"
             ) {
-
             }
         }
         Box(modifier = Modifier.padding(10.dp)) {
-            ImageSearchLabelText(text = item.title)
+            ImageSearchLabelText(text = item.description)
         }
     }
 }
@@ -99,17 +95,13 @@ fun SearchImageLoad(image: String) {
                 }
             }
 
-            is AsyncImagePainter.State.Success -> {
+            else -> {
                 Image(
                     painter = painter,
                     contentDescription = "search image",
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop
                 )
-            }
-
-            else -> {
-
             }
         }
     }

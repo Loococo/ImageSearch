@@ -11,8 +11,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import app.loococo.imagesearch.navigation.TopLevelDestination
-import app.loococo.presentation.bookmarks.bookmarksRoute
-import app.loococo.presentation.bookmarks.navigateToBookmarks
+import app.loococo.presentation.bookmark.bookmarkRoute
+import app.loococo.presentation.bookmark.navigateToBookmarks
 import app.loococo.presentation.search.navigateToSearch
 import app.loococo.presentation.search.searchRoute
 
@@ -40,7 +40,7 @@ class ImageSearchAppState(
     val currentTopLevelDestination: TopLevelDestination?
         @Composable get() = when (currentDestination?.route) {
             searchRoute -> TopLevelDestination.SEARCH
-            bookmarksRoute -> TopLevelDestination.BOOKMARKS
+            bookmarkRoute -> TopLevelDestination.BOOKMARKS
             else -> null
         }
 

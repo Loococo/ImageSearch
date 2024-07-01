@@ -3,7 +3,7 @@ package app.loococo.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import app.loococo.data.paging.SearchPagingSource
+import app.loococo.data.remote.paging.SearchPagingSource
 import app.loococo.data.remote.api.SearchApi
 import app.loococo.domain.model.Search
 import app.loococo.domain.repository.SearchRepository
@@ -13,13 +13,13 @@ import javax.inject.Inject
 class SearchRepositoryImpl @Inject constructor(
     private val searchApi: SearchApi,
 ) : SearchRepository {
-    override fun search(searchWord: String): Flow<PagingData<Search>> {
+    override fun search(keyword: String): Flow<PagingData<Search>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 10
             ),
             pagingSourceFactory = {
-                SearchPagingSource(searchApi, searchWord)
+                SearchPagingSource(searchApi, keyword)
             }
         ).flow
     }
