@@ -15,14 +15,17 @@ data class BookmarkEntity(
 
 fun BookmarkEntity.toSearch(): Search {
     return Search(
+        id = id,
         image = image,
         description = description,
-        keyword = keyword
+        keyword = keyword,
+        state = true
     )
 }
 
 fun Search.toBookmarkEntity(): BookmarkEntity {
     return BookmarkEntity(
+        id = id,
         image = image,
         description = description,
         keyword = keyword

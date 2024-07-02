@@ -15,5 +15,5 @@ object AppConfig {
     const val kotlin = "1.9.0"
 
     const val baseUrl =  "\"https://dapi.kakao.com\""
-    const val apiKey =  "\"b0926e19abc63a2d001ca5fa6f506413\""
+    const val apiKey =  "\"key\""
 }

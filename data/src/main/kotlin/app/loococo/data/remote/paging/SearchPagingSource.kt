@@ -16,7 +16,8 @@ class SearchPagingSource @Inject constructor(
         return try {
             val response = searchApi.search(keyword, page, params.loadSize)
             if (response.isSuccessful) {
-                val responseData = response.body()?.documents?.map { it.toSearch(keyword) } ?: emptyList()
+                val responseData =
+                    response.body()?.documents?.map { it.toSearch(keyword) } ?: emptyList()
                 LoadResult.Page(
                     data = responseData,
                     prevKey = if (page == 1) null else page - 1,

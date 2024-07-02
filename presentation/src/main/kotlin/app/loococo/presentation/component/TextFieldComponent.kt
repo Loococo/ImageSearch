@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,7 +26,6 @@ import androidx.compose.ui.unit.dp
 import app.loococo.presentation.theme.Black
 import app.loococo.presentation.theme.Black50
 import app.loococo.presentation.theme.White
-import app.loococo.presentation.utils.ImageSearchIcons
 
 @Composable
 fun ImageSearchBorderTextField(
@@ -72,24 +70,8 @@ fun ImageSearchBorderTextField(
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Done,
                     keyboardType = KeyboardType.Text
-                ),
-                keyboardActions = KeyboardActions(
-                    onDone = {
-                        onValueChange(textState.text)
-                    }
                 )
             )
-
-            if (textState.text.isNotBlank()) {
-                ImageSearchIconButton(
-                    size = 25.dp,
-                    icon = ImageSearchIcons.Search,
-                    description = "done",
-                    onClick = {
-                        onValueChange(textState.text)
-                    }
-                )
-            }
         }
     }
 }
