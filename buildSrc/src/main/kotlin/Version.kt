@@ -1,7 +1,6 @@
 object Version {
     object AndroidX {
         const val MATERIAL3 = "androidx.compose.material3:material3"
-        const val SPLASH = "androidx.core:core-splashscreen:1.2.0-alpha01"
     }
 
     object KTX {
@@ -12,22 +11,14 @@ object Version {
         const val ACTIVITY = "androidx.activity:activity-compose:1.9.0-alpha03"
         const val BOM = "androidx.compose:compose-bom:2024.06.00"
         const val UI = "androidx.compose.ui:ui"
-        const val UI_GRAPHICS = "androidx.compose.ui:ui-graphics"
-        const val UI_TOOLING_PREVIEW = "androidx.compose.ui:ui-tooling-preview"
         const val NAVIGATION = "androidx.navigation:navigation-compose:2.8.0-alpha08"
-        const val LIVEDATA = "androidx.compose.runtime:runtime-livedata"
-        const val LIFECYCLE = "androidx.lifecycle:lifecycle-runtime-compose:2.7.0"
-    }
-
-    object AndroidTest {
-        const val TEST_RUNNER = "androidx.test.ext:junit:1.1.5"
-        const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:3.5.1"
     }
 
     object HILT {
         const val HILT_ANDROID = "com.google.dagger:hilt-android:2.51.1"
         const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:2.51.1"
         const val HILT_VIEWMODEL = "androidx.hilt:hilt-navigation-compose:1.2.0"
+        const val DAGGER_HILT_JAVAX = "javax.inject:javax.inject:1"
     }
 
     object RETROFIT {
