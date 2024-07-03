@@ -9,13 +9,15 @@ import androidx.compose.ui.Modifier
 import app.loococo.presentation.theme.Red
 
 @Composable
-fun CircularProgressBar() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        CircularProgressIndicator(
-            color = Red
-        )
+fun CircularProgressBar(show: Boolean) {
+    if (show) {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            CircularProgressIndicator(
+                color = Red
+            )
+        }
     }
 }

@@ -1,12 +1,9 @@
 package app.loococo.imagesearch.di
 
-import app.loococo.data.repository.BookmarksRepositoryImpl
-import app.loococo.data.repository.SearchRepositoryImpl
 import app.loococo.domain.repository.BookmarksRepository
 import app.loococo.domain.repository.SearchRepository
 import app.loococo.domain.usecase.BookMarksUseCase
 import app.loococo.domain.usecase.SearchUseCase
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

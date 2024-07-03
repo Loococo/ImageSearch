@@ -56,10 +56,11 @@ class ImageSearchAppState(
                 restoreState = true
             }
 
-            when(topLevelDestination) {
+            when (topLevelDestination) {
                 TopLevelDestination.SEARCH -> {
                     navController.navigateToSearch(topLevelNavOptions)
                 }
+
                 TopLevelDestination.BOOKMARKS -> {
                     navController.navigateToBookmarks(topLevelNavOptions)
                 }

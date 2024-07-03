@@ -14,7 +14,6 @@ import app.loococo.presentation.component.ImageSearchBottomBar
 import app.loococo.presentation.component.ImageSearchNavigationBarItem
 import app.loococo.presentation.component.ImageSearchTopBar
 import app.loococo.presentation.theme.Black1
-import app.loococo.presentation.theme.Black5
 import app.loococo.presentation.theme.ImageSearchTheme
 
 @ExperimentalMaterial3Api

@@ -34,13 +34,3 @@ fun HeightSpacer(
             .background(backgroundColor)
     )
 }
-
-@Composable
-fun WidthHeightSpacer(width: Int, height: Int, backgroundColor: Color = Color.Transparent) {
-    Spacer(
-        modifier = Modifier
-            .width(width.dp)
-            .height(height.dp)
-            .background(backgroundColor)
-    )
-}

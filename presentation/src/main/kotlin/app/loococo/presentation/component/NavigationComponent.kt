@@ -17,7 +17,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import app.loococo.presentation.theme.Red
 import app.loococo.presentation.theme.Red10
-import app.loococo.presentation.theme.Transparent
 import app.loococo.presentation.theme.White
 
 @ExperimentalMaterial3Api

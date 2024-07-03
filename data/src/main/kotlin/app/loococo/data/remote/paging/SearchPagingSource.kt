@@ -5,12 +5,16 @@ import androidx.paging.PagingState
 import app.loococo.data.model.response.toSearch
 import app.loococo.data.remote.api.SearchApi
 import app.loococo.domain.model.Search
+import app.loococo.domain.model.error.SearchError
+import retrofit2.HttpException
+import java.io.IOException
 import javax.inject.Inject
 
 class SearchPagingSource @Inject constructor(
     private val searchApi: SearchApi,
     private val keyword: String
 ) : PagingSource<Int, Search>() {
+
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Search> {
         val page = params.key ?: 1
         return try {
@@ -24,10 +28,16 @@ class SearchPagingSource @Inject constructor(
                     nextKey = if (response.body()?.meta?.isEnd == true) null else page + 1
                 )
             } else {
-                LoadResult.Error(Exception("Network error"))
+                LoadResult.Error(SearchError.ServerError)
             }
         } catch (e: Exception) {
-            LoadResult.Error(e)
+            LoadResult.Error(
+                when (e) {
+                    is IOException -> SearchError.NoInternet
+                    is HttpException -> SearchError.ServerError
+                    else -> SearchError.UnknownError(e.message)
+                }
+            )
         }
     }
 

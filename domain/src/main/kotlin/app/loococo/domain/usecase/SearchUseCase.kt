@@ -16,6 +16,7 @@ class SearchUseCase @Inject constructor(
     private val bookMarksUseCase: BookMarksUseCase,
     private val scope: CoroutineScope
 ) {
+
     fun search(keyword: String): Flow<PagingData<Search>> {
         return flow {
             if (keyword.isBlank()) {

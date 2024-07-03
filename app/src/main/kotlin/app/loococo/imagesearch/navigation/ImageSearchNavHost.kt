@@ -8,9 +8,7 @@ import app.loococo.presentation.search.searchRoute
 import app.loococo.presentation.search.searchScreen
 
 @Composable
-fun ImageSearchNavHost(
-    appState: ImageSearchAppState
-) {
+fun ImageSearchNavHost(appState: ImageSearchAppState) {
     val navController = appState.navController
 
     NavHost(

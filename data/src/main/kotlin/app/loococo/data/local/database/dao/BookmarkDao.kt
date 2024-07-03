@@ -13,6 +13,7 @@ interface BookmarkDao {
 
     @Query("DELETE FROM bookmark WHERE id = :id")
     suspend fun deleteById(id: Int)
+
     @Query("DELETE FROM bookmark WHERE keyword = :keyword AND image = :image")
     suspend fun deleteByKeywordAndImage(keyword: String, image: String)
 

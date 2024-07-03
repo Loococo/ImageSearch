@@ -6,10 +6,15 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
+import app.loococo.domain.model.error.SearchError
 import app.loococo.presentation.component.CircularProgressBar
 import app.loococo.presentation.component.ImageSearchCommonScreen
+import app.loococo.presentation.component.ImageSearchErrorPopup
+import app.loococo.presentation.component.ShowPopupState
+import app.loococo.presentation.component.rememberImageSearchErrorPopupState
 
 @Composable
 internal fun SearchRoute() {
@@ -23,16 +28,23 @@ fun SearchScreen() {
     val keyword by viewModel.keyWordFlow.collectAsStateWithLifecycle()
     val searchWordListState = viewModel.searchWordListFlow.collectAsLazyPagingItems()
 
-    val isInitial = keyword.isEmpty()
-    val isEmpty = searchWordListState.itemCount == 0
-    val isLoading = searchWordListState.loadState.refresh is LoadState.Loading
-    val isError = searchWordListState.loadState.refresh is LoadState.Error
-
     val listState = rememberLazyGridState()
 
     LaunchedEffect(key1 = keyword) {
         listState.animateScrollToItem(0)
     }
+    val showPopupState = rememberImageSearchErrorPopupState()
+
+    if (showPopupState.showPopupState) {
+        ImageSearchErrorPopup(
+            errorState = showPopupState.errorState,
+            onRefresh = {
+                searchWordListState.retry()
+            },
+            onDismissRequest = showPopupState::dismissPopup
+        )
+    }
+
     ImageSearchCommonScreen(
         listState,
         searchWordListState,
@@ -40,16 +52,37 @@ fun SearchScreen() {
         viewModel::updateBookmark
     )
 
-    when {
-        isInitial && isEmpty -> {
-        }
+    SearchStateScreen(
+        keyword = keyword,
+        state = searchWordListState.loadState,
+        popupState = showPopupState
+    )
+}
 
-        isLoading -> {
-            CircularProgressBar()
-        }
+@Composable
+fun SearchStateScreen(
+    keyword: String,
+    state: CombinedLoadStates,
+    popupState: ShowPopupState
+) {
+    CircularProgressBar(false)
 
-        isError -> {
+    val isLoading = state.refresh is LoadState.Loading || state.append is LoadState.Loading
 
+    if (isLoading && keyword.isNotBlank()) {
+        CircularProgressBar(true)
+    }
+    LaunchedEffect(state) {
+        when {
+            state.refresh is LoadState.Error -> {
+                val refreshError = (state.refresh as LoadState.Error).error as SearchError
+                popupState.showPopup(refreshError)
+            }
+
+            state.append is LoadState.Error -> {
+                val appendError = (state.append as LoadState.Error).error as SearchError
+                popupState.showPopup(appendError)
+            }
         }
     }
 }

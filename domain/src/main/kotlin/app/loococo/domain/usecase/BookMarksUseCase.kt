@@ -3,8 +3,6 @@ package app.loococo.domain.usecase
 import app.loococo.domain.model.Search
 import app.loococo.domain.repository.BookmarksRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 class BookMarksUseCase @Inject constructor(private val bookMarksRepository: BookmarksRepository) {
@@ -19,10 +17,6 @@ class BookMarksUseCase @Inject constructor(private val bookMarksRepository: Book
 
     suspend fun delete(search: Search) {
         bookMarksRepository.delete(search)
-    }
-
-    fun getBookmarks(): Flow<List<Search>> {
-        return bookMarksRepository.getBookmarks()
     }
 
     fun getBookmarksByKeyword(keyword: String): Flow<List<Search>> {

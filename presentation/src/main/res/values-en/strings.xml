@@ -1,0 +1,10 @@
+<resources>
+    <string name="search">Search</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="search_hint">Please enter a search term.</string>
+    <string name="search_internet_error">Please check your internet connection.</string>
+    <string name="search_server_error">A server error has occurred.</string>
+    <string name="search_unknown_error">An error has occurred.</string>
+    <string name="search_noting">No search results found.</string>
+    <string name="bookmark_noting">No bookmarks available.</string>
+</resources>

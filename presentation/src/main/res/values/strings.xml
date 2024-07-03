@@ -1,5 +1,10 @@
 <resources>
     <string name="search">검색</string>
-    <string name="bookmarks">북마크</string>
+    <string name="bookmark">북마크</string>
     <string name="search_hint">검색어를 입력해주세요.</string>
+    <string name="search_internet_error">인터넷 연결을 확인해주세요.</string>
+    <string name="search_server_error">서버 오류가 발생했습니다.</string>
+    <string name="search_unknown_error">오류가 발생했습니다.</string>
+    <string name="search_noting">검색 결과가 없습니다.</string>
+    <string name="bookmark_noting">북마크가 없습니다.</string>
 </resources>

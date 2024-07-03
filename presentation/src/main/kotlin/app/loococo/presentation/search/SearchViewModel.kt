@@ -33,6 +33,7 @@ class SearchViewModel @Inject constructor(
         .cachedIn(viewModelScope)
 
     fun updateSearchWord(searchWord: String) {
+        if (_keyWordFlow.value == searchWord) return
         _keyWordFlow.value = searchWord.trim()
     }
 
@@ -41,5 +42,11 @@ class SearchViewModel @Inject constructor(
             val action = if (search.state) bookMarksUseCase::delete else bookMarksUseCase::insert
             action(search)
         }
+    }
+
+    fun refreshSearch() {
+        val currentKeyword = _keyWordFlow.value
+        _keyWordFlow.value = ""
+        _keyWordFlow.value = currentKeyword
     }
 }

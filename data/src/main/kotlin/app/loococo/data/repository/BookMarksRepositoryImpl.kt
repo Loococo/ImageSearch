@@ -29,6 +29,7 @@ class BookmarksRepositoryImpl @Inject constructor(
     }
 
     override fun getBookmarksByKeyword(keyword: String): Flow<List<Search>> {
-        return bookmarkDao.getBookmarksByKeyword(keyword).map { bookmarks -> bookmarks.map { it.toSearch() } }
+        return bookmarkDao.getBookmarksByKeyword(keyword)
+            .map { bookmarks -> bookmarks.map { it.toSearch() } }
     }
 }
