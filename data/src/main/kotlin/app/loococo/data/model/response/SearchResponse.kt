@@ -40,7 +40,7 @@ data class Meta(
 
 fun ImageDocument.toSearch(keyword: String): Search {
     return Search(
-        image = imageUrl,
+        image = thumbnailUrl,
         description = displaySitename,
         keyword = keyword
     )
